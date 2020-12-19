@@ -16,11 +16,6 @@ public class RegistrationController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @GetMapping("create")
-    public void createUsersTable() {
-        userRepository.createUsersTable();
-    }
-
     //http://localhost:8080/registration?username=name1&password=password1
     @GetMapping("/registration")
     public void registerUser(@RequestParam("username") String username,

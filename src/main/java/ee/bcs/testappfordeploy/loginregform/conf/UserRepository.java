@@ -29,14 +29,6 @@ public class UserRepository {
         paramMap.put("password", encodedPassword);
         jdbcTemplate.update(sql, paramMap);
     }
-
-    public void createUsersTable() {
-        String sql = "CREATE TABLE users (username TEXT, password TEXT, encodedpassword TEXT, PRIMARY KEY(username))";
-        Map paramMap = new HashMap<>();
-        paramMap.put("username", "username");
-        jdbcTemplate.update(sql, paramMap);
-    }
-
 }
 
 
