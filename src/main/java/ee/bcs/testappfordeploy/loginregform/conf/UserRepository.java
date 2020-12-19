@@ -21,7 +21,7 @@ public class UserRepository {
     }
 
     public void registerUser(String username, String encodedPassword) {
-        String sql = "INSERT INTO users (username, encodedpassword) VALUES (:username, :password)";
+        String sql = "INSERT INTO users (username, encodedPassword) VALUES (:username, :password)";
         Map paramMap = new HashMap<>();
         paramMap.put("username", username);
         paramMap.put("password", encodedPassword);

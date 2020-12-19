@@ -68,7 +68,7 @@
         fetch('https://loginauthformtest.herokuapp.com/registration', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(userRequest)   //возврат объекета в формате JSON
+            body: JSON.stringify(userRequest)   //возврат объекта в формате JSON
         }).then(function () {
             alert("User created");
             window.location = "/index1fetch.html"

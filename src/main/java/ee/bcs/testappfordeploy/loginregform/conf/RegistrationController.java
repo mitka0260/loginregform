@@ -31,7 +31,7 @@ public class RegistrationController {
 
     @GetMapping(value = "")
     public String helloSpring(@RequestParam(value = "name", defaultValue = "Spring") String name) {
-        return "To register go to /registration.html    Hello, " + name;
+        return "To register go to https://loginauthformtest.herokuapp.com/registration.html    Hello, " + name;
     }
 
     //http://localhost:8080/math/max?aKey=3&bKey=4&cKey=10
