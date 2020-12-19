@@ -1,0 +1,181 @@
+<html>
+<head>
+    <title>Test</title>
+</head>
+<body>
+
+<h1>Test test test</h1>
+<table border="1" id="tabel">
+</table>
+<input id="a"><input id="b"><input id="c">
+<button id="pressMe">Press Me</button>
+<div id="vastus">Here you'll see the answer</div>
+<script>
+    let vastus = document.getElementById("vastus");
+    let vastusFunktsioon = function (resultBody) {
+        vastus.innerText = resultBody;
+    }
+    let button = document.getElementById("pressMe");
+    let a = document.getElementById("a");
+    let b = document.getElementById("b");
+    let c = document.getElementById("c");
+    button.onclick = function () {
+        console.log(a.value + " - " + b.value + " - " + c.value);
+        fetch('https://loginauthformtest.herokuapp.com/math/max?aKey=' + a.value
+            + '&bKey=' + b.value + '&cKey=' + c.value)
+            .then(result => result.text())
+            .then(vastusFunktsioon);
+    }
+</script>
+
+
+<br>
+<input id="fibIndex" placeholder="what Fibonacci nr you wish">
+<button id="fibBtn">Press me</button>
+<div id="fibVastus">Here you'll see the answer</div>
+<script>
+    let fibVastus = document.getElementById("fibVastus");
+    let vastusFunktsioonFib = function (resultBody) {
+        fibVastus.innerText = resultBody;
+    }
+    let fibBtn = document.getElementById("fibBtn");
+    let a1 = document.getElementById("fibIndex");
+
+    fibBtn.onclick = function () {
+        console.log(a1.value);
+        fetch('https://loginauthformtest.herokuapp.com/math/Fibonacci?n=' + a1.value)
+            .then(result => result.text())
+            .then(vastusFunktsioonFib);
+    }
+</script>
+
+<br>
+<input id="isEvenNr" placeholder="is even nr">
+<button id="evenBtn">Press Me</button>
+<div id="evenVastus">Here you'll see the answer</div>
+<script>
+    let evenVastus = document.getElementById("evenVastus");
+    let vastusFunktsioonEven = function (resultBody) {
+        evenVastus.innerText = resultBody;
+    }
+    let evenBtn = document.getElementById("evenBtn");
+    let a2 = document.getElementById("isEvenNr");
+
+    evenBtn.onclick = function () {
+        console.log(a2.value);
+        fetch('https://loginauthformtest.herokuapp.com/math/isEven?number=' + a2.value)
+            .then(result => result.text())
+            .then(vastusFunktsioonEven);
+    }
+</script>
+
+<br>
+<input id="newIbanNr" placeholder="input new user's iban">
+<button id="createAccountBtn">Create account with this iban</button>
+<script>
+    let createAccountBtn = document.getElementById("createAccountBtn");
+    let newIban = document.getElementById("newIbanNr");
+    createAccountBtn.onclick = function () {
+        console.log(newIban.value);
+        fetch('https://loginauthformtest.herokuapp.com/bank/createAccountDB?iban=' + newIban.value)
+            .then(result => result.text());
+    }
+</script>
+<br>
+
+<table>
+    <tr>
+        <td><input id="ibanGetBalance" placeholder="what iban(index) balance you wish"></td>
+        <td><button id="getBalanceBtn">Press to get this iban balance</button></td>
+        <td><div id="ibanBalance">answer will come here</div></td>
+    </tr>
+</table>
+<script>
+    let getBalanceBtn = document.getElementById("getBalanceBtn");
+    let ibanIndex = document.getElementById("ibanGetBalance");
+    getBalanceBtn.onclick = function () {
+        console.log(ibanIndex.value);
+        fetch('https://loginauthformtest.herokuapp.com/getAccountBalanceDB?iban=' + ibanIndex.value)
+            .then(result => result.text())
+            .then(vastusFuntsioon3);
+    }
+
+    let ibanBalance = document.getElementById("ibanBalance");
+    let vastusFuntsioon3 = function (resultBody) {
+        ibanBalance.innerText = resultBody;
+    }
+</script>
+<table>
+    <tr>
+        <td><input id="ibanDeposit" placeholder="what iban(nr) for money"></td>
+        <td><input id="howMuch" placeholder="how much you wish"></td>
+        <td>
+            <button id="depositMoneyBtn">Press to deposit money</button>
+        </td>
+    </tr>
+</table>
+<script>
+    let depositMoneyBtn = document.getElementById("depositMoneyBtn");
+    let ibanNr = document.getElementById("ibanDeposit");
+    let howMuch = document.getElementById("howMuch");
+    depositMoneyBtn.onclick = function () {
+        console.log(ibanNr.value);
+        console.log(howMuch.value);
+        fetch('https://loginauthformtest.herokuapp.com/bank/depositMoneyDB?iban=' + ibanNr.value + '&howMuch=' + howMuch.value)
+            .then(result => result.text());
+    }
+</script>
+<table><tr><td><input id="ibanWithdraw" placeholder="iban(nr) from money"></td>
+    <td><input id="howMuchWithdraw" placeholder="how much you wish"></td>
+    <td><button id="withdrawMoneyBtn">Press to withdraw money</button></td>
+</tr></table>
+<script>
+    let withdrawMoneyBtn = document.getElementById("withdrawMoneyBtn");
+    let ibanWithdraw = document.getElementById("ibanWithdraw");
+    let howMuchWithdraw = document.getElementById("howMuchWithdraw");
+    withdrawMoneyBtn.onclick = function() {
+        console.log(ibanWithdraw.value);
+        console.log(howMuchWithdraw.value);
+        fetch('https://loginauthformtest.herokuapp.com/bank/withDrawMoneyDB?iban=' + ibanWithdraw.value + '&howMuch=' + howMuchWithdraw.value)
+            .then(result => result.text());
+    }
+</script>
+<tabel>
+    <tr>
+        <td><input id="ibanFrom" placeholder="ibanFrom"></td>
+        <td><input id="ibanTo" placeholder="iban to"></td>
+        <td><input id="howMuchTrans" placeholder="how much"></td>
+        <td><button id="transBtn">Transfer money</button></td>
+    </tr>
+</tabel>
+<script>
+    let ibanFrom = document.getElementById("ibanFrom");
+    let ibanTo = document.getElementById("ibanTo");
+    let howMuchTrans = document.getElementById("howMuchTrans");
+    let transBtn = document.getElementById("transBtn");
+    transBtn.onclick = function() {
+        console.log(ibanFrom.value);
+        console.log(ibanTo.value);
+        console.log(howMuchTrans.value);
+        fetch('https://loginauthformtest.herokuapp.com/bank/transferMoneyDB?ibanFrom=' + ibanFrom.value + '&ibanTo=' + ibanTo.value + '&howMuch=' + howMuchTrans.value)
+            .then(result => result.text());
+    }
+</script>
+
+<br>
+<button id="showAll" onclick="showAll()">show all accounts</button>
+<div id="allAccounts">You'll see all accounts here</div>
+<script>
+    function showAll() {
+        fetch('https://loginauthformtest.herokuapp.com/bank/accountsDB')
+            .then(result => result.text())
+            .then(showAllFunction);
+    }
+    let allAccounts = document.getElementById("allAccounts");
+    let showAllFunction = function(resultBody) {
+        allAccounts.innerText = resultBody;
+    }
+</script>
+
+</body>
+</html>

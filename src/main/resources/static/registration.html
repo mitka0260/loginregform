@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+<div>
+    <h2> Registration</h2>
+    <tabel>
+        <tr>
+            <td><input autofocus="true" id="username" placeholder="username"></td>
+            <td><input id="password" placeholder="password" type="password"></td>
+            <td>
+                <button id="regBtn">Register</button>
+            </td>
+        </tr>
+    </tabel>
+    <br></br>
+    <a href="/">Main</a>
+</div>
+
+<script>
+    let username = document.getElementById("username");
+    let password = document.getElementById("password");
+    let regBtn = document.getElementById("regBtn");
+    regBtn.onclick = function () {
+        console.log(username.value);
+        console.log(password.value);
+        fetch('http://localhost:8080/registration?username=' + username.value + '&password=' + password.value)
+            .then(function () {
+                alert("User created");
+                window.location = "/index1fetch.html"
+            });
+        //.then(result => result.text());
+    }
+</script>
+
+<br>
+<h2>SAFE registration</h2>
+<tabel>
+    <tr>
+        <td><input autofocus="true" id="usernameSafe" placeholder="username"></td>
+        <td><input id="passwordSafe" placeholder="password" type="password"></td>
+        <td>
+            <button id="regBtnSafe">Register</button>
+        </td>
+    </tr>
+</tabel>
+<br></br>
+<a href="/">Main</a>
+</div>
+
+<script>
+    let usernameSafe = document.getElementById("usernameSafe");
+    let passwordSafe = document.getElementById("passwordSafe");
+    let regBtnSafe = document.getElementById("regBtnSafe");
+
+    regBtnSafe.onclick = function () {
+
+        let userRequest = {
+            username: usernameSafe.value,
+            password: passwordSafe.value
+        };
+
+        console.log(usernameSafe.value);
+        console.log(passwordSafe.value);
+        fetch('http://localhost:8080/registration', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(userRequest)   //возврат объекета в формате JSON
+        }).then(function () {
+            alert("User created");
+            window.location = "/index1fetch.html"
+        });
+    }
+</script>
+
+
+</body>
+</html>
