@@ -27,7 +27,7 @@
     regBtn.onclick = function () {
         console.log(username.value);
         console.log(password.value);
-        fetch('http://localhost:8080/registration?username=' + username.value + '&password=' + password.value)
+        fetch('https://loginauthformtest.herokuapp.com/registration?username=' + username.value + '&password=' + password.value)
             .then(function () {
                 alert("User created");
                 window.location = "/index1fetch.html"
@@ -65,7 +65,7 @@
 
         console.log(usernameSafe.value);
         console.log(passwordSafe.value);
-        fetch('http://localhost:8080/registration', {
+        fetch('https://loginauthformtest.herokuapp.com/registration', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(userRequest)   //возврат объекета в формате JSON
