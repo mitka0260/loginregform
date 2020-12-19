@@ -14,7 +14,7 @@ public class UserRepository {
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     public String getUserPassword (String username) {
-        String sql = "SELECT users.encodedPassword FROM users WHERE username = :username";
+        String sql = "SELECT encodedpassword FROM users WHERE username = :username";
         Map<String, String> paramMap = new HashMap<>();
         paramMap.put("username", username);
         return jdbcTemplate.queryForObject(sql, paramMap,  String.class);
