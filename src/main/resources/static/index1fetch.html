@@ -95,7 +95,7 @@
     let ibanIndex = document.getElementById("ibanGetBalance");
     getBalanceBtn.onclick = function () {
         console.log(ibanIndex.value);
-        fetch('/getAccountBalanceDB?iban=' + ibanIndex.value)
+        fetch('/bank/getAccountBalanceDB?iban=' + ibanIndex.value)
             .then(result => result.text())
             .then(vastusFuntsioon3);
     }
