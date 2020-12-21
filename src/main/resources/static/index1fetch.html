@@ -21,7 +21,7 @@
     let c = document.getElementById("c");
     button.onclick = function () {
         console.log(a.value + " - " + b.value + " - " + c.value);
-        fetch('https://loginauthformtest.herokuapp.com/math/max?aKey=' + a.value
+        fetch('/math/max?aKey=' + a.value
             + '&bKey=' + b.value + '&cKey=' + c.value)
             .then(result => result.text())
             .then(vastusFunktsioon);
@@ -43,7 +43,7 @@
 
     fibBtn.onclick = function () {
         console.log(a1.value);
-        fetch('https://loginauthformtest.herokuapp.com/math/Fibonacci?n=' + a1.value)
+        fetch('/math/Fibonacci?n=' + a1.value)
             .then(result => result.text())
             .then(vastusFunktsioonFib);
     }
@@ -63,7 +63,7 @@
 
     evenBtn.onclick = function () {
         console.log(a2.value);
-        fetch('https://loginauthformtest.herokuapp.com/math/isEven?number=' + a2.value)
+        fetch('/math/isEven?number=' + a2.value)
             .then(result => result.text())
             .then(vastusFunktsioonEven);
     }
@@ -77,7 +77,7 @@
     let newIban = document.getElementById("newIbanNr");
     createAccountBtn.onclick = function () {
         console.log(newIban.value);
-        fetch('https://loginauthformtest.herokuapp.com/bank/createAccountDB?iban=' + newIban.value)
+        fetch('/bank/createAccountDB?iban=' + newIban.value)
             .then(result => result.text());
     }
 </script>
@@ -95,7 +95,7 @@
     let ibanIndex = document.getElementById("ibanGetBalance");
     getBalanceBtn.onclick = function () {
         console.log(ibanIndex.value);
-        fetch('https://loginauthformtest.herokuapp.com/getAccountBalanceDB?iban=' + ibanIndex.value)
+        fetch('/getAccountBalanceDB?iban=' + ibanIndex.value)
             .then(result => result.text())
             .then(vastusFuntsioon3);
     }
@@ -121,7 +121,7 @@
     depositMoneyBtn.onclick = function () {
         console.log(ibanNr.value);
         console.log(howMuch.value);
-        fetch('https://loginauthformtest.herokuapp.com/bank/depositMoneyDB?iban=' + ibanNr.value + '&howMuch=' + howMuch.value)
+        fetch('/bank/depositMoneyDB?iban=' + ibanNr.value + '&howMuch=' + howMuch.value)
             .then(result => result.text());
     }
 </script>
@@ -136,7 +136,7 @@
     withdrawMoneyBtn.onclick = function() {
         console.log(ibanWithdraw.value);
         console.log(howMuchWithdraw.value);
-        fetch('https://loginauthformtest.herokuapp.com/bank/withDrawMoneyDB?iban=' + ibanWithdraw.value + '&howMuch=' + howMuchWithdraw.value)
+        fetch('/bank/withDrawMoneyDB?iban=' + ibanWithdraw.value + '&howMuch=' + howMuchWithdraw.value)
             .then(result => result.text());
     }
 </script>
@@ -157,7 +157,7 @@
         console.log(ibanFrom.value);
         console.log(ibanTo.value);
         console.log(howMuchTrans.value);
-        fetch('https://loginauthformtest.herokuapp.com/bank/transferMoneyDB?ibanFrom=' + ibanFrom.value + '&ibanTo=' + ibanTo.value + '&howMuch=' + howMuchTrans.value)
+        fetch('/bank/transferMoneyDB?ibanFrom=' + ibanFrom.value + '&ibanTo=' + ibanTo.value + '&howMuch=' + howMuchTrans.value)
             .then(result => result.text());
     }
 </script>
@@ -167,7 +167,7 @@
 <div id="allAccounts">You'll see all accounts here</div>
 <script>
     function showAll() {
-        fetch('https://loginauthformtest.herokuapp.com/bank/accountsDB')
+        fetch('/bank/accountsDB')
             .then(result => result.text())
             .then(showAllFunction);
     }
